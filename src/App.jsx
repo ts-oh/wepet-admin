@@ -21,7 +21,7 @@ const AdminPage = () => {
       mainImageUrl: thumbnailLink,
     }
 
-    const serverAddress = 'http://10.58.52.176:8001'
+    const serverAddress = 'http://localHost:8001'
 
     try {
       const response = await axios.post(`${serverAddress}/products`, newProduct)
@@ -33,18 +33,18 @@ const AdminPage = () => {
       setQuantity('')
       setThumbnailLink('')
 
-      console.log('Product added:', response.data)
+      console.log('Product added 🥳:', response.data)
     } catch (error) {
-      console.error('Error adding product:', error)
+      console.error('Error adding product 🫠:', error)
     }
   }
 
   return (
     <div>
-      <h1>Admin Page</h1>
+      <h1>Admin Page 👑</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Product Name:</label>
+          <label>Product Name 🪪:</label>
           <input
             type="text"
             value={productName}
@@ -52,7 +52,7 @@ const AdminPage = () => {
           />
         </div>
         <div>
-          <label>Product Price:</label>
+          <label>Product Price 💰:</label>
           <input
             type="text"
             value={productPrice}
@@ -60,7 +60,7 @@ const AdminPage = () => {
           />
         </div>
         <div>
-          <label>Product Category ID:</label>
+          <label>Product Category ID 🏷️:</label>
           <input
             type="text"
             value={category}
@@ -68,14 +68,14 @@ const AdminPage = () => {
           />
         </div>
         <div>
-          <label>Product Description:</label>
+          <label>Product Description 📝:</label>
           <textarea
             value={productDescription}
             onChange={(e) => setProductDescription(e.target.value)}
           />
         </div>
         <div>
-          <label>Quantity:</label>
+          <label>Quantity 🔢:</label>
           <input
             type="number"
             value={quantity}
@@ -83,14 +83,14 @@ const AdminPage = () => {
           />
         </div>
         <div>
-          <label>Image Thumbnail Link:</label>
+          <label>Image Thumbnail Link 🏞️:</label>
           <input
             type="text"
             value={thumbnailLink}
             onChange={(e) => setThumbnailLink(e.target.value)}
           />
         </div>
-        <button type="submit">Add Product</button>
+        <button type="submit">Add Product 🥓</button>
       </form>
     </div>
   )
