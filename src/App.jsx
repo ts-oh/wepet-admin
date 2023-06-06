@@ -9,7 +9,6 @@ const AdminPage = () => {
   const [productDescription, setProductDescription] = useState('')
   const [quantity, setQuantity] = useState('')
   const [thumbnailLink, setThumbnailLink] = useState('')
-
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -22,11 +21,10 @@ const AdminPage = () => {
       mainImageUrl: thumbnailLink,
     }
 
+    const serverAddress = 'http://10.58.52.176:8001'
+
     try {
-      const response = await axios.post(
-        'http://localhost:8001/products',
-        newProduct
-      )
+      const response = await axios.post(`${serverAddress}/products`, newProduct)
 
       setProductName('')
       setProductPrice('')
