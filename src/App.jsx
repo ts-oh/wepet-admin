@@ -9,6 +9,8 @@ const AdminPage = () => {
   const [productDescription, setProductDescription] = useState('')
   const [quantity, setQuantity] = useState('')
   const [thumbnailLink, setThumbnailLink] = useState('')
+  const [serverAddress, setServerAddress] = useState('')
+
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -21,10 +23,11 @@ const AdminPage = () => {
       mainImageUrl: thumbnailLink,
     }
 
-    const serverAddress = 'http://localHost:8001'
-
     try {
-      const response = await axios.post(`${serverAddress}/products`, newProduct)
+      const response = await axios.post(
+        `http://${serverAddress}/products`,
+        newProduct
+      )
 
       setProductName('')
       setProductPrice('')
@@ -43,6 +46,14 @@ const AdminPage = () => {
     <div>
       <h1>WePet 🐶 Admin 😼 Page</h1>
       <form onSubmit={handleSubmit}>
+        <div>
+          <label>Server Address 💌:</label>
+          <input
+            type="text"
+            value={serverAddress}
+            onChange={(e) => setServerAddress(e.target.value)}
+          />
+        </div>
         <div>
           <label>Product Name 🪪:</label>
           <input
