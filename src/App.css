@@ -47,10 +47,10 @@ button {
   margin: 16px;
   background-color: whitesmoke;
   color: black;
-  border: 2px solid;
+  border: 1px solid;
   border-radius: 4px;
   cursor: pointer;
-  width: 125px;
+  width: 225px;
   transition: background-color 0.2s, border-color 0.2s;
 }
 
