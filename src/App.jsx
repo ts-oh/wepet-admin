@@ -41,7 +41,7 @@ const AdminPage = () => {
 
   return (
     <div>
-      <h1>Admin Page 👑</h1>
+      <h1>WePet 🐶 Admin 😼 Page</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Product Name 🪪:</label>
