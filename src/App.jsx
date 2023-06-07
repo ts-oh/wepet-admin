@@ -4,10 +4,10 @@ import './App.css'
 
 const AdminPage = () => {
   const [productName, setProductName] = useState('')
-  const [productPrice, setProductPrice] = useState('')
-  const [category, setCategory] = useState('')
-  const [productDescription, setProductDescription] = useState('')
-  const [quantity, setQuantity] = useState('')
+  // const [productPrice, setProductPrice] = useState('')
+  // const [category, setCategory] = useState('')
+  // const [productDescription, setProductDescription] = useState('')
+  // const [quantity, setQuantity] = useState('')
   const [thumbnailLink, setThumbnailLink] = useState('')
   const [serverAddress, setServerAddress] = useState('')
 
@@ -16,24 +16,24 @@ const AdminPage = () => {
 
     const newProduct = {
       productName: productName,
-      productPrice: productPrice,
-      productDescription: productDescription,
-      productCategoryId: category,
-      productQuantity: quantity,
+      // productPrice: productPrice,
+      // productDescription: productDescription,
+      // productCategoryId: category,
+      // productQuantity: quantity,
       mainImageUrl: thumbnailLink,
     }
 
     try {
-      const response = await axios.post(
+      const response = await axios.patch(
         `http://${serverAddress}/products`,
         newProduct
       )
 
       setProductName('')
-      setProductPrice('')
-      setCategory('')
-      setProductDescription('')
-      setQuantity('')
+      // setProductPrice('')
+      // setCategory('')
+      // setProductDescription('')
+      // setQuantity('')
       setThumbnailLink('')
 
       console.log('Product added 🥳:', response.data)
@@ -62,7 +62,7 @@ const AdminPage = () => {
             onChange={(e) => setProductName(e.target.value)}
           />
         </div>
-        <div>
+        {/* <div>
           <label>Product Price 💰:</label>
           <input
             type="text"
@@ -92,7 +92,7 @@ const AdminPage = () => {
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
           />
-        </div>
+        </div> */}
         <div>
           <label>Image Thumbnail Link 🏞️:</label>
           <input
@@ -101,7 +101,7 @@ const AdminPage = () => {
             onChange={(e) => setThumbnailLink(e.target.value)}
           />
         </div>
-        <button type="submit">Add Product 🥓</button>
+        <button type="submit">🩹 Patch Product 🥓</button>
       </form>
     </div>
   )
