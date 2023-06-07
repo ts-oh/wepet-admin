@@ -4,10 +4,10 @@ import './App.css'
 
 const AdminPage = () => {
   const [productName, setProductName] = useState('')
-  // const [productPrice, setProductPrice] = useState('')
-  // const [category, setCategory] = useState('')
+  const [productPrice, setProductPrice] = useState('')
+  const [category, setCategory] = useState('')
   // const [productDescription, setProductDescription] = useState('')
-  // const [quantity, setQuantity] = useState('')
+  const [quantity, setQuantity] = useState('')
   const [thumbnailLink, setThumbnailLink] = useState('')
   const [serverAddress, setServerAddress] = useState('')
 
@@ -16,24 +16,24 @@ const AdminPage = () => {
 
     const newProduct = {
       productName: productName,
-      // productPrice: productPrice,
+      productPrice: productPrice,
       // productDescription: productDescription,
-      // productCategoryId: category,
-      // productQuantity: quantity,
+      productCategoryId: category,
+      productQuantity: quantity,
       mainImageUrl: thumbnailLink,
     }
 
     try {
-      const response = await axios.patch(
+      const response = await axios.post(
         `http://${serverAddress}/products`,
         newProduct
       )
 
       setProductName('')
-      // setProductPrice('')
-      // setCategory('')
+      setProductPrice('')
+      setCategory('')
       // setProductDescription('')
-      // setQuantity('')
+      setQuantity('')
       setThumbnailLink('')
 
       console.log('Product added 🥳:', response.data)
@@ -62,7 +62,7 @@ const AdminPage = () => {
             onChange={(e) => setProductName(e.target.value)}
           />
         </div>
-        {/* <div>
+        <div>
           <label>Product Price 💰:</label>
           <input
             type="text"
@@ -78,13 +78,13 @@ const AdminPage = () => {
             onChange={(e) => setCategory(e.target.value)}
           />
         </div>
-        <div>
+        {/* <div>
           <label>Product Description 📝:</label>
           <textarea
             value={productDescription}
-            onChange={(e) => setProductDescription(e.target.value)}
+            onChange={(e) => setProductDescription(e.target.value.trim())}
           />
-        </div>
+        </div> */}
         <div>
           <label>Quantity 🔢:</label>
           <input
@@ -92,7 +92,7 @@ const AdminPage = () => {
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
           />
-        </div> */}
+        </div>
         <div>
           <label>Image Thumbnail Link 🏞️:</label>
           <input
@@ -101,7 +101,7 @@ const AdminPage = () => {
             onChange={(e) => setThumbnailLink(e.target.value)}
           />
         </div>
-        <button type="submit">🩹 Patch Product 🥓</button>
+        <button type="submit">Post Product 🥓</button>
       </form>
     </div>
   )

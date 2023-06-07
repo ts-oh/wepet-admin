@@ -42,16 +42,21 @@ textarea {
 }
 
 button {
-  font-size: 24px;
-  padding: 15px 20px;
+  font-size: 20px;
+  padding: 15px 16px;
   margin: 16px;
   background-color: whitesmoke;
   color: black;
-  border: 1px solid;
+  border: 2px solid;
   border-radius: 4px;
   cursor: pointer;
   width: 225px;
   transition: background-color 0.2s, border-color 0.2s;
+}
+
+button:hover {
+  background-color: darkgray;
+  color: black;
 }
 
 button:active {
