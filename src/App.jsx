@@ -3,48 +3,60 @@ import axios from 'axios'
 import './App.css'
 
 const AdminPage = () => {
-  const [productName, setProductName] = useState('')
-  const [productPrice, setProductPrice] = useState('')
-  const [category, setCategory] = useState('')
-  // const [productDescription, setProductDescription] = useState('')
-  const [quantity, setQuantity] = useState('')
-  const [thumbnailLink, setThumbnailLink] = useState('')
   const [serverAddress, setServerAddress] = useState('')
+  const [studioName, setStudioName] = useState('')
+  const [studioPrice, setStudioPrice] = useState('')
+  const [studioAddress, setStudioAddress] = useState('')
+  const [studioTypeId, setStudioTypeId] = useState('')
+  const [studioCategoryId, setStudioCategoryId] = useState('')
+  const [description, setDescription] = useState('')
+  const [maxGuests, setMaxGuests] = useState('')
+  const [rules, setRules] = useState('')
+  const [locationLatitude, setLocationLatitude] = useState('')
+  const [locationLongitude, setLocationLongitude] = useState('')
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    const newProduct = {
-      productName: productName,
-      productPrice: productPrice,
-      // productDescription: productDescription,
-      productCategoryId: category,
-      productQuantity: quantity,
-      mainImageUrl: thumbnailLink,
+    const newStudio = {
+      studioName: studioName,
+      studioPrice: studioPrice,
+      studioAddress: studioAddress,
+      studioTypeId: studioTypeId,
+      studioCategoryId: studioCategoryId,
+      description: description,
+      maxGuests: maxGuests,
+      rules: rules,
+      locationLatitude: locationLatitude,
+      locationLongitude: locationLongitude,
     }
 
     try {
       const response = await axios.post(
-        `http://${serverAddress}/products`,
-        newProduct
+        `http://${serverAddress}/studios`,
+        newStudio
       )
 
-      setProductName('')
-      setProductPrice('')
-      setCategory('')
-      // setProductDescription('')
-      setQuantity('')
-      setThumbnailLink('')
+      setStudioName('')
+      setStudioPrice('')
+      setStudioAddress('')
+      setStudioTypeId('')
+      setStudioCategoryId('')
+      setDescription('')
+      setMaxGuests('')
+      setRules('')
+      setLocationLatitude('')
+      setLocationLongitude('')
 
-      console.log('Product added 🥳:', response.data)
+      console.log('Studio added 🥳:', response.data)
     } catch (error) {
-      console.error('Error adding product 🫠:', error)
+      console.error('Error adding studio 🫠:', error)
     }
   }
 
   return (
     <div>
-      <h1>WePet 🐶 Admin 😼 Page</h1>
+      <h1>SPACE AROUND 👨‍🚀</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Server Address 💌:</label>
@@ -55,53 +67,81 @@ const AdminPage = () => {
           />
         </div>
         <div>
-          <label>Product Name 🪪:</label>
+          <label>Studio Name 🪪:</label>
           <input
             type="text"
-            value={productName}
-            onChange={(e) => setProductName(e.target.value)}
+            value={studioName}
+            onChange={(e) => setStudioName(e.target.value)}
           />
         </div>
         <div>
-          <label>Product Price 💰:</label>
+          <label>Studio Price 💰:</label>
           <input
             type="text"
-            value={productPrice}
-            onChange={(e) => setProductPrice(e.target.value)}
+            value={studioPrice}
+            onChange={(e) => setStudioPrice(e.target.value)}
           />
         </div>
         <div>
-          <label>Product Category ID 🏷️:</label>
+          <label>Studio Address 🏢:</label>
           <input
             type="text"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            value={studioAddress}
+            onChange={(e) => setStudioAddress(e.target.value)}
           />
         </div>
-        {/* <div>
-          <label>Product Description 📝:</label>
+        <div>
+          <label>Studio Type ID 🏷️:</label>
+          <input
+            type="text"
+            value={studioTypeId}
+            onChange={(e) => setStudioTypeId(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Studio Category ID 🏷️:</label>
+          <input
+            type="text"
+            value={studioCategoryId}
+            onChange={(e) => setStudioCategoryId(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Description 📝:</label>
           <textarea
-            value={productDescription}
-            onChange={(e) => setProductDescription(e.target.value.trim())}
-          />
-        </div> */}
-        <div>
-          <label>Quantity 🔢:</label>
-          <input
-            type="number"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div>
-          <label>Image Thumbnail Link 🏞️:</label>
+          <label>Max Guests 👥:</label>
           <input
             type="text"
-            value={thumbnailLink}
-            onChange={(e) => setThumbnailLink(e.target.value)}
+            value={maxGuests}
+            onChange={(e) => setMaxGuests(e.target.value)}
           />
         </div>
-        <button type="submit">Post Product 🥓</button>
+        <div>
+          <label>Rules ⚠️:</label>
+          <textarea value={rules} onChange={(e) => setRules(e.target.value)} />
+        </div>
+        <div>
+          <label>Location Latitude 🌍:</label>
+          <input
+            type="text"
+            value={locationLatitude}
+            onChange={(e) => setLocationLatitude(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Location Longitude 🌍:</label>
+          <input
+            type="text"
+            value={locationLongitude}
+            onChange={(e) => setLocationLongitude(e.target.value)}
+          />
+        </div>
+        <button type="submit">POST Studio 📮</button>
       </form>
     </div>
   )
