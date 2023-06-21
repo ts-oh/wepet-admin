@@ -5,6 +5,7 @@ import './App.css'
 const AdminPage = () => {
   const [serverAddress, setServerAddress] = useState('')
   const [studioName, setStudioName] = useState('')
+  const [hostId, setHostId] = useState('')
   const [studioPrice, setStudioPrice] = useState('')
   const [studioAddress, setStudioAddress] = useState('')
   const [studioTypeId, setStudioTypeId] = useState('')
@@ -20,15 +21,16 @@ const AdminPage = () => {
 
     const newStudio = {
       studioName: studioName,
-      studioPrice: studioPrice,
+      hostId: hostId,
+      studioPrice: parseFloat(studioPrice),
       studioAddress: studioAddress,
-      studioTypeId: studioTypeId,
-      studioCategoryId: studioCategoryId,
+      studioTypeId: parseInt(studioTypeId),
+      studioCategoryId: parseInt(studioCategoryId),
       description: description,
-      maxGuests: maxGuests,
+      maxGuests: parseInt(maxGuests),
       rules: rules,
-      locationLatitude: locationLatitude,
-      locationLongitude: locationLongitude,
+      locationLatitude: parseFloat(locationLatitude),
+      locationLongitude: parseInt(locationLongitude),
     }
 
     try {
@@ -59,7 +61,7 @@ const AdminPage = () => {
       <h1>SPACE AROUND 👨‍🚀</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Server Address 💌:</label>
+          <label>Server Address 💌: (e.g. 127.0.0.1:8001)</label>
           <input
             type="text"
             value={serverAddress}
@@ -72,6 +74,14 @@ const AdminPage = () => {
             type="text"
             value={studioName}
             onChange={(e) => setStudioName(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Host ID 🔢:</label>
+          <input
+            type="text"
+            value={hostId}
+            onChange={(e) => setHostId(e.target.value)}
           />
         </div>
         <div>
